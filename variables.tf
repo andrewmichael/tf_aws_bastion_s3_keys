@@ -34,6 +34,11 @@ variable extra_tags {
   description = "A list of tags to associate to the bastion instance."
 }
 
+variable "tags" {
+  description = "A map of tags to add to all resources"
+  default     = {}
+}
+
 variable "ami" {}
 
 variable "instance_type" {

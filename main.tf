@@ -3,9 +3,7 @@ resource "aws_security_group" "bastion" {
   vpc_id      = "${var.vpc_id}"
   description = "Bastion security group (only SSH inbound access is allowed)"
 
-  tags {
-    Name = "${var.name}"
-  }
+  tags = "${var.tags}"
 }
 
 resource "aws_security_group_rule" "ssh_ingress" {
