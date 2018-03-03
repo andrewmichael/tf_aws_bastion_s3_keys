@@ -3,7 +3,7 @@ resource "aws_security_group" "bastion" {
   vpc_id      = "${var.vpc_id}"
   description = "Bastion security group (only SSH inbound access is allowed)"
 
-  tags = "${merge(var.tags,"${map("Name", "${var.name}-bastion")}")}"
+  tags = "${merge(var.tags,"${map("Name", "${var.name}")}")}"
 }
 
 resource "aws_security_group_rule" "ssh_ingress" {
