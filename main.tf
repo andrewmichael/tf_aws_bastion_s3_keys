@@ -1,16 +1,9 @@
-variable name_tag {
-  default = 
-    {
-       Name = "${var.name}-bastion"
-    }  
-}
-
 resource "aws_security_group" "bastion" {
   name        = "${var.name}"
   vpc_id      = "${var.vpc_id}"
   description = "Bastion security group (only SSH inbound access is allowed)"
 
-  tags = "${merge(var.tags,var.name_tag)}"
+  tags = "${merge(var.tags,"${map("Name", "${var.name}-bastion")}")}"
 }
 
 resource "aws_security_group_rule" "ssh_ingress" {
