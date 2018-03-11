@@ -12,7 +12,6 @@ resource "aws_security_group_rule" "ssh_ingress" {
   to_port           = "22"
   protocol          = "tcp"
   cidr_blocks       = "${var.allowed_cidr}"
-  ipv6_cidr_blocks  = "${var.allowed_ipv6_cidr}"
   security_group_id = "${aws_security_group.bastion.id}"
 }
 
@@ -34,10 +33,6 @@ resource "aws_security_group_rule" "bastion_all_egress" {
 
   cidr_blocks = [
     "0.0.0.0/0",
-  ]
-
-  ipv6_cidr_blocks = [
-    "::/0",
   ]
 
   security_group_id = "${aws_security_group.bastion.id}"
